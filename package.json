@@ -11,7 +11,7 @@
     "@babel/runtime": "^7.20.7",
     "express": "^4.18.2",
     "meteor-node-stubs": "^1.2.5",
-    "mysql": "^2.18.1",
+    "mysql2": "^3.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

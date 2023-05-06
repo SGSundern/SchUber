@@ -1,0 +1,9 @@
+{
+    "public": {},
+    "mysql": {
+        "host" : "localhost",
+        "database" : "meineDB",
+        "username" : "username",
+        "password" : "password"
+    } 
+}
