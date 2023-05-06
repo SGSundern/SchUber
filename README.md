@@ -1,7 +1,11 @@
 # SchUber
 Das Mitfahr-App-Projekt des SGS
 
-Als Framework benutzen wir [MeteorJS] (https://www.meteor.com)
+Als Framework benutzen wir [MeteorJS] (https://www.meteor.com).
+Installiert wird das so:
+
+    npm install -g meteor
+    curl https://install.meteor.com/ | sh
 
 # Installation
 

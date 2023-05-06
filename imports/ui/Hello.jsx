@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export const Hello = () => {
   const [counter, setCounter] = useState(0);
@@ -9,8 +9,10 @@ export const Hello = () => {
 
   return (
     <div>
-      <button onClick={increment}>Click Me</button>
-      <p>You've pressed the button {counter} times.</p>
+      <button onClick={increment}>Cookie Clicker</button>
+      <p>
+        Hier kansnt du testen, wie React funktioniert: {counter} mal geklickt.
+      </p>
     </div>
   );
 };
