@@ -1,27 +1,14 @@
 import { Meteor } from "meteor/meteor";
 import { LinksCollection } from "/imports/api/links";
-import mysql from "mysql2";
+import mysql from "mysql2/promise";
+import { SqlManager } from "../imports/lib/mysql";
 
 async function insertLink({ title, url }) {
   await LinksCollection.insertAsync({ title, url, createdAt: new Date() });
 }
 
-const initMySql = () => {
-  var con = mysql.createConnection({
-    host: Meteor.settings.mysql.host,
-    user: Meteor.settings.mysql.username,
-    password: Meteor.settings.mysql.password,
-    port: Meteor.settings.mysql.port || 3306,
-  });
-
-  con.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
-};
-
 Meteor.startup(async () => {
-  initMySql();
+  await SqlManager.connect();
 
   // If the Links collection is empty, add some data.
   if ((await LinksCollection.find().countAsync()) === 0) {
