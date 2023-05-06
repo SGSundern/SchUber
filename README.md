@@ -4,8 +4,12 @@ Das Mitfahr-App-Projekt des SGS
 Als Framework benutzen wir [MeteorJS] (https://www.meteor.com).
 Installiert wird das so:
 
+Erstmal brauchen wir NodeJS und den Package Manager npm, Anleitung gibts hier: [NodeJS und NPM installieren](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+Dann brauchen wir Meteor:
+
     npm install -g meteor
-    curl https://install.meteor.com/ | sh
+
 
 # Installation
 
