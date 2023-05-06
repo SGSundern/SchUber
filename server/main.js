@@ -11,6 +11,7 @@ const initMySql = () => {
     host: Meteor.settings.mysql.host,
     user: Meteor.settings.mysql.username,
     password: Meteor.settings.mysql.password,
+    port: Meteor.settings.mysql.port || 3306,
   });
 
   con.connect(function (err) {
