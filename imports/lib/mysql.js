@@ -22,5 +22,5 @@ SqlManager["disconnect"] = async () => {
 };
 
 SqlManager["query"] = async (querystring) => {
-  return SqlManager.query(querystring);
+  return SqlManager.connection.query(querystring);
 };
