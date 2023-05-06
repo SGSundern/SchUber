@@ -31,3 +31,7 @@ Im Ordner kann nun per
     meteor run --settings settings.json
 
 die App gestartet werden und ist dann unter `http://localhost:3000` erreichbar.
+
+# Deploy
+
+Im Netz bereitgestellt wird die App per *push-to-deploy*. Wenn im Fork (=der Kopie) [deploy](https://github.com/bratelefant/SchUber/tree/deploy) Änderungen (per Pull-Request / Push) vorgenommen werden, wird die App neu übersetzt und gestartet.
