@@ -1,7 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { LinksCollection } from "/imports/api/links";
 import { SqlManager } from "../imports/lib/mysql";
-import { TestTabelle } from "../imports/api/test";
+import "../imports/api/rest";
 
 async function insertLink({ title, url }) {
   await LinksCollection.insertAsync({ title, url, createdAt: new Date() });
@@ -43,13 +43,6 @@ Meteor.startup(async () => {
     });
   }
 
-  /*try {
-    await SqlManager.query(
-      "CREATE TABLE Persons (PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255), City varchar(255));"
-    );
-  } catch (e) {
-    console.warn(e);
-  }*/
   // If the Links collection is empty, add some data.
   if ((await LinksCollection.find().countAsync()) === 0) {
     await insertLink({
