@@ -19,7 +19,10 @@ import { useAPI } from "../hooks/useAPI";
  * @returns Komponente
  */
 export const Links = () => {
-  const { loading, data } = useAPI("http://localhost:3000/api/v1/links", "GET");
+  const { loading, data } = useAPI(
+    Meteor.settings.public.rootUrl + "/api/v1/links",
+    "GET"
+  );
 
   if (loading) {
     return (

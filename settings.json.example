@@ -1,5 +1,5 @@
 {
-    "public": {},
+    "public": { "rootUrl": "http://localhost:3000" },
     "mysql": {
         "host" : "localhost",
         "database" : "meineDB",
