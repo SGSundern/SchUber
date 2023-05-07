@@ -1,27 +1,47 @@
 import { Meteor } from "meteor/meteor";
 import { LinksCollection } from "/imports/api/links";
-import mysql from "mysql2";
+import { SqlManager } from "../imports/lib/mysql";
+import "../imports/api/rest";
 
 async function insertLink({ title, url }) {
   await LinksCollection.insertAsync({ title, url, createdAt: new Date() });
 }
 
-const initMySql = () => {
-  var con = mysql.createConnection({
-    host: Meteor.settings.mysql.host,
-    user: Meteor.settings.mysql.username,
-    password: Meteor.settings.mysql.password,
-    port: Meteor.settings.mysql.port || 3306,
-  });
-
-  con.connect(function (err) {
-    if (err) throw err;
-    console.log("Connected!");
-  });
-};
-
 Meteor.startup(async () => {
-  initMySql();
+  await SqlManager.connect();
+
+  try {
+    await SqlManager.query(
+      "CREATE TABLE Links (title varchar(255), url varchar(255)) "
+    );
+  } catch (e) {
+    console.log(e.message);
+  }
+
+  const [rows, fields] = await SqlManager.query("SELECT * FROM Links;");
+
+  if (rows.length === 0) {
+    await SqlManager.query(
+      'INSERT INTO Links VALUES("Do the Tutorial","https://www.meteor.com/tutorials/react/creating-an-app")'
+    );
+    await SqlManager.query(
+      'INSERT INTO Links VALUES("Follow the Guide","https://guide.meteor.com")'
+    );
+    await SqlManager.query(
+      'INSERT INTO Links VALUES("Read the Docs","https://docs.meteor.com")'
+    );
+    await SqlManager.query(
+      'INSERT INTO Links VALUES("Discussions","https://forums.meteor.com")'
+    );
+  } else {
+    console.log('\nEinträge in der Test-Tabelle "Links"');
+    console.log("====================================\n");
+    rows.forEach((row, index) => {
+      console.log("Eintrag " + (index + 1) + ": ");
+      console.log("Title: " + row.title);
+      console.log("Link: " + row.url + "\n");
+    });
+  }
 
   // If the Links collection is empty, add some data.
   if ((await LinksCollection.find().countAsync()) === 0) {
