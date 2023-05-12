@@ -19,7 +19,7 @@ export const Hello = () => {
       </Grid>
       <Grid item xs={12} sm={6}>
         <Typography>
-          Hier kansnt du testen, wie React funktioniert: {counter} mal geklickt.
+          Hier kannst du testen, wie React funktioniert: {counter} mal geklickt.
         </Typography>
       </Grid>
     </Grid>
