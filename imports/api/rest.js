@@ -50,10 +50,13 @@ app.get("/api/v1/ip", (request, response) =>
 
 app.get("/api/v1/links", async (request, response) => {
   try {
+    await SqlManager.connect();
     const [rows, fields] = await SqlManager.query("SELECT * FROM Links;");
     response.jsend.success(rows);
   } catch (e) {
     response.jsend.fail({ data: e.message });
+  } finally {
+    await SqlManager.disconnect();
   }
 });
 
